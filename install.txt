@@ -1,0 +1,16 @@
+这是sublime text 2 的一个插件。解压到sublime2/data/packages 目录下就可以使用。
+
+ipython在0.11以上引入了zeromq，可以使用client-server模式让外部程序和当前运行的ipython kernel交互。具体方法是先运行"ipython console"启动一个kernel，再通过sublime的插件连接上去。
+
+插件中包含了zeromq的dll文件，在linux下使用需要相应安装pyzmq，并复制给sublime。sublime使用的是python2.6的虚拟机，最好的办法是在python2.6下安装pyzmq，然后把整个目录复制过去就可以了。
+
+安装完以后，还需要添加键盘快捷方式（菜单Preferences->Key bindings - User）
+{ "keys": ["ctrl+enter"], "command": "ipython_exec" },
+{ "keys": ["f5"], "command": "ipython_exec_file" },
+其中 ipython_exec 和 ipython_exec_file 是这个插件提供给sublime的两个命令。
+
+设置完之后按ctrl+enter，就可以将当前行送给ipython执行。
+如果选中一段block比如if,for等，再ctrl+enter，就执行这一段代码。
+如果在一行当中有一个表达式比如1+2，选中它再ctrl+enter，可以将选中文字替换为结果"3"。
+F5可以将当前buffer所有的内容一下子发送到到ipython执行。
+
